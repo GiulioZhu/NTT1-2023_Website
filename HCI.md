@@ -1,7 +1,6 @@
 ---
 layout: about
 title: HCI
-order: 3
 ---
 
 <h2>HCI</h2>

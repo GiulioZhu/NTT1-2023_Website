@@ -1,5 +1,4 @@
 ---
 layout: archives
 title: Blog
-order: 6
 ---
