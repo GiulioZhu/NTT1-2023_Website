@@ -157,8 +157,9 @@ header_pages:
   - HCI.md
   - research.md
   - systemDesign.md
+  - implementation.md
+  - testing.md
   - evaluation.md
-  - blog.md
   - appendix.md
 
 # Page default value

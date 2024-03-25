@@ -1,19 +1,34 @@
----
-layout: default
-heading: 'Team 43'
-subheading: 'Team 43'
-banner: 'default'
----
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>{{ page.title }}</title>
-        <link rel="stylesheet" href="/assets/css/styles.css">
-      </head>
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
 
-      <body>
-        {{ content }}
-      </body>
+  {%- include head.html -%}
+
+  <head>
+      <meta charset="utf-8">
+      <title>{{ page.title }}</title>
+      <link rel="main" href="/2023/group43/assets/css/main.css">
+    </head>
+
+    <body>
+
+      {%- include views/header.html -%}
+
+      {%- include views/banner.html -%}
+  
+      {%- include extensions/hashlocate.html -%}
+  
+      {%- include extensions/theme-toggle.html -%}
+  
+      {%- include extensions/click-to-top.html -%}
+
+      <main class="page-content" aria-label="Content">
+        <div class="wrapper">
+          {{ content }}
+        </div>
+      </main>
+
+      {%- include views/footer.html -%}
+    </body>
 </html>
 
 
