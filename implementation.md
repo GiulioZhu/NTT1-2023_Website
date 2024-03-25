@@ -9,8 +9,15 @@ As shown in our research, we decided to use `Android Studio` as our IDE with Jav
 
 # Dependencies and Tools #
 
-# Implementation Showcase 
+# Features #
+## Object Recognition ##
 
+## User Manual ##
+
+## Call for Help ##
+
+# Implementation Showcase 
+{% include view-slideshow.html %}
 
 # Technical Video Demo # 
 

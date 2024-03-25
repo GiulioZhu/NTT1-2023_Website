@@ -35,58 +35,72 @@ $brand-color: map-get($brand-colors, "orangered");
 
 $content-width: {{ site.content_width | default: '920px' }};
 
-// 
-/* Three columns side by side */
-.column {
+/* Our Team */
+.team_column {
   float: left;
   width: 30%;
   margin-bottom: 16px;
   padding: 0 8px;
 }
 
-/* Display the columns below each other instead of side by side on small screens */
 @media screen and (max-width: 650px) {
-  .column {
+  .team_column {
     width: 100%;
     display: block;
   }
 }
 
-/* Add some shadows to create a card effect */
-.card {
+.team_card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
-/* Some left and right padding inside the container */
-.container {
+.team_container {
   padding: 0 16px;
 }
 
-/* Clear floats */
-.container::after, .row::after {
+.team_container::after, .team_row::after {
   content: "";
   clear: both;
   display: table;
 }
 
-.title {
+.team_title {
   color: grey;
 }
 
-.button {
-  border: none;
-  outline: 0;
-  display: inline-block;
-  padding: 8px;
-  color: white;
-  background-color: #000;
-  text-align: center;
-  cursor: pointer;
-  width: 100%;
+/* Stats */
+.stats_column {
+  float: left;
+  width: 25%;
+  padding: 0 5px;
 }
 
-.button:hover {
-  background-color: #555;
+.stats_row {margin: 0 -5px;}
+
+.stats_row:after {
+  content: "";
+  display: table;
+  clear: both;
 }
+
+@media screen and (max-width: 600px) {
+  .stats_column {
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+  }
+}
+
+.stats_card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #444;
+  color: white;
+}
+
+.fa {font-size:50px;}
+
 
 @import "yat";
