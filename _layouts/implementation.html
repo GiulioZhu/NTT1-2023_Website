@@ -1,18 +1,13 @@
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: site.lang | default: "en" }}">
-
-  {%- include head.html -%}
-
   <head>
     <meta charset="utf-8">
     <title>{{ page.title }}</title>
-    <link rel="main" href="/2023/group43/assets/css/implementation.css">
+    <link rel="stylesheet" href="assets/css/implementation.css">
+    <script src="assets/js/implementation.js"></script>
+  </head>
 
-    <script>
-        let slideIndex = 1;
-        showSlides(slideIndex);
-    </script>
-</head>
+  {%- include head.html -%}
 
   <body>
 

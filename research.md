@@ -50,6 +50,9 @@ Among our list of possible frameworks, we considered **Unity**, **Vuforia**, and
 ## APIs
 
 
+<!-- i will add a comparison table here - Giuli, link: https://www.w3schools.com/howto/howto_css_comparison_table.asp -->
+
+
 # References
 [1] “AR Core,” Google Developers. https://developers.google.com/ar
 

@@ -1,0 +1,106 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+
+// Default theme colors
+$theme-colors: (
+  "coolblack": #090a0b,
+  "spacegrey": #353535,
+  "snowwhite": #ffffff,
+);
+
+// Default brand colors
+$brand-colors: (
+  "orangered": #ff5100,
+  "greatgold": #f2cb05,
+  "greenblue": #389092,
+);
+
+$theme-name: "{{ site.theme_color }}";
+$brand-name: "{{ site.brand_color }}";
+$theme-color: map-get($theme-colors, "snowwhite");
+$brand-color: map-get($brand-colors, "orangered");
+
+@if map-has-key($theme-colors, $theme-name) {
+  $theme-color: map-get($theme-colors, $theme-name);
+} @else if str-index($theme-name, "#") == 1 {
+  $theme-color: {{ site.theme_color | default: '#ffffff' }};
+}
+
+@if map-has-key($brand-colors, $brand-name) {
+  $brand-color: map-get($brand-colors, $brand-name);
+} @else if str-index($brand-name, "#") == 1 {
+  $brand-color: {{ site.brand_color | default: '#ff5100' }};
+}
+
+$content-width: {{ site.content_width | default: '920px' }};
+
+/* Our Team */
+.team_column {
+  float: left;
+  width: 30%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+@media screen and (max-width: 650px) {
+  .team_column {
+    width: 100%;
+    display: block;
+  }
+}
+
+.team_card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.team_container {
+  padding: 0 16px;
+}
+
+.team_container::after, .team_row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.team_title {
+  color: grey;
+}
+
+/* Stats */
+.stats_column {
+  float: left;
+  width: 25%;
+  padding: 0 5px;
+}
+
+.stats_row {margin: 0 -5px;}
+
+.stats_row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media screen and (max-width: 600px) {
+  .stats_column {
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+  }
+}
+
+.stats_card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #444;
+  color: white;
+}
+
+.fa {font-size:50px;}
+
+
+@import "yat";
