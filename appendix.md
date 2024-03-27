@@ -11,11 +11,10 @@ These are the biweekly reports of our team.
 # Deployment Manual #
 
 # User Manual #
+- [User Manual](/2023/group43/userManual)
 
 # Legal Issues and Processes #
-
+Please review the following documents before downloading or using our software:
 {% include EULA.html %}
-
-
 
 # Monthly Video
