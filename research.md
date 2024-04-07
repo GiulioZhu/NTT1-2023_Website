@@ -78,33 +78,18 @@ Among our list of possible frameworks, we considered **Unity**, **Vuforia**, and
 
 # References
 [^1]: “AR Core,” Google Developers. https://developers.google.com/ar.
-
 [^2]: “ML Kit,” Google Developers. https://developers.google.com/ml-kit.
-
 [^3]: P. Manager, “Native App vs Cross-Platform: How to Make a Choice,” JatApp, Feb. 20, 2019. https://jatapp.co/blog/.
-
 [^4]: Apple, “Xcode - Support - Apple Developer,” Apple.com, 2020. https://developer.apple.com/support/xcode/top-advantages-of-using-unity-for-game-development-bd64b6a3004native-or-cross-platform-app-development/ (accessed Apr. 07, 2024).
-
 [^5]: Apple, “Swift,” Apple. https://www.apple.com/lae/swift(accessed Apr. 07, 2024).
-
 [^6]: Google, “Kotlin and Android,” Android Developers. https://developer.android.com/kotlin.
-
 [^7]: Google, “Add Firebase to your Android project Firebase," Firebase, 2019. https://firebase.google.com/docs/android/setup.
-
 [^8]: Google, “Custom Models with ML Kit,” Google Developers. https://developers.google.com/ml-kit/custom-models.
-
 [^9]: Google, “TensorFlow Lite guide,” TensorFlow. https://www.tensorflow.org/lite/guide.
-
 [^10]: Google, “Migration guide ML Kit,” Google for Developers. https://developers.google.com/ml-kit/migration (accessed Apr. 07, 2024).
-
 [^11]: A. Howard et al., “Searching for MobileNetV3,” arXiv.org, 2019. https://arxiv.org/abs/1905.02244.
-
 [^12]: N. Donges, “What is transfer learning? Exploring the popular deep learning approach,” Built In, Aug. 25, 2022. https://builtin.com/data-science/transfer-learning.
-
 [^13]: Google, “Transfer learning with a pretrained ConvNet TensorFlow Core,” TensorFlow. https://www.tensorflow.org/tutorials/images/transfer_learning.
-
 [^14]: Code academy, “Intro to OpenAI API: Intro to OpenAI GPT API Cheatsheet,” Codecademy. https://www.codecademy.com/learn/intro-to-open-ai-gpt-api/modules/intro-to-open-ai-gpt-api/cheatsheet.
-
 [^15]: Unity Technologies, “Unity - Unity,” Unity, 2019. https://unity.com.
-
 [^16]: X. Web, “Top Advantages of Using Unity for Game Development,” Medium, Jun. 19, 2023. https://medium.com/@xceltecweb/.
