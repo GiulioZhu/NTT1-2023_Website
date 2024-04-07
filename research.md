@@ -120,8 +120,29 @@ Among our list of possible frameworks, we considered **Unity**, **Vuforia**, and
 
 **Android Studio** is the official IDE for Android app development, based on IntelliJ IDEA. It provides a comprehensive development environment for Android app development, with features like _code completion, refactoring, and lint tools_. It also provides a visual layout editor, which allows developers to create layouts by dragging and dropping UI elements. It also provides a wide range of tools for debugging and testing, which makes it a powerful tool for Android app development.
 
-## Libraries
+## SDKs
+### Research Video Conferencing SDK
 
+WebRTC is an open-source project that provides a set of APIs and protocols for real-time communication over the web. It allows for peer-to-peer communication. WebRTC is also supported natively by modern web browsers, making it easy to integrate into web applications. It offers features such as video/audio streaming, and screen sharing. However, WebRTC requires developers to build their own user interface and handle signaling and connection management, providing flexibility and customization options but requiring more development effort.
+
+On the other hand, Jitsi is an open-source video conferencing platform that utilizes WebRTC technology. It provides a ready-to-use video conferencing solution with a user interface and various features out of the box. Jitsi offers features like screen sharing, recording, live streaming, and support for various audio/video codecs. It has built-in support for secure connections (HTTPS), encryption, and authentication. Jitsi can be self-hosted or used via the public Jitsi Meet service, offering a simplified setup and deployment process compared to building a WebRTC solution from scratch. Additionally, Jitsi has a dedicated community and regular updates, ensuring ongoing support and improvements.
+
+While WebRTC offers flexibility and customization options, it requires more development effort to build a complete video conferencing solution. Jitsi, on the other hand, provides a ready-to-use platform with a user-friendly interface and various features out of the box. Given the requirement for a video conferencing solution, Jitsi emerges as a better choice due to its ease of deployment, feature-rich offering, ongoing support and updates, and faster time-to-market compared to building a custom WebRTC solution from scratch.
+
+### Research Database SDK
+
+Firebase Realtime Database offers real-time data synchronization. This feature ensures that as meetings are created or joined, updates are instantaneously reflected across all connected devices. This real-time capability is essential for enabling junior engineers to quickly find and join meetings without delays. Additionally, Firebase is known for its scalability, automatically adjusting to handle data changes well. This is particularly important for an application that may experience intense usage periods.
+
+Another significant advantage of Firebase is its ease of use. It is known for its user-friendly interface and easy setup process, making it an ideal choice for first-time users or development teams under tight deadlines. The comprehensive documentation and good community support further streamline the development process, allowing for a quicker focus shift to building the app's core features, such as AR detection and video conferencing integration.
+
+While Firebase shines in many areas, it's also important to consider the benefits of using a more traditional database system like PostgreSQL, especially when enhanced with real-time capabilities through extensions. PostgreSQL is a powerful, open-source object-relational database system known for its use with complex queries. When equipped with real-time extensions, PostgreSQL can serve real-time applications by providing instantaneous data updates, similar to Firebase.
+
+However, setting up and managing a PostgreSQL database, even with real-time extensions, tends to be more complex and time-consuming compared to Firebase. This complexity may not be ideal for teams looking to quickly develop and deploy their applications. Additionally, while PostgreSQL offers great scalability, it typically requires more management compared to Firebase's more efficient approach to handling fluctuating loads.
+
+In conclusion, considering the specific needs of the AR app - including real-time updates for meeting information, ease of setup and use, and the ability to scale dynamically - Firebase’s Realtime Database emerges as the superior choice, especially for first-time users and teams prioritizing rapid development and deployment. Its built-in real-time capabilities ensure that the application can efficiently manage the dynamic nature of meeting data. Firebase's ease of integration and management allows developers to focus on enhancing the app's core functionalities, making it the best option for this project.
+
+### Summary of Technical Decisions
+In summary we have decided to opt with Android development, using Android Studio with the Java programming language. For the video conferencing solution, we've opted to use the Jitsi meet SDK and Firebase realtime database to store the meetings. Furthermore, we choose to use MLKit for our object-detection, barcode scanning functionality, and to provide overlays. We also used the ChatGPT API in order to detect errors and give predictive maintenance.
 ## APIs
 
 <!-- i will add a comparison table here - Giuli, link: https://www.w3schools.com/howto/howto_css_comparison_table.asp -->
