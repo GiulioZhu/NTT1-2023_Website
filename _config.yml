@@ -156,11 +156,13 @@ header_pages:
   - requirements.md
   - HCI.md
   - research.md
+  - algorithms.md
   - systemDesign.md
   - implementation.md
   - testing.md
   - evaluation.md
   - appendix.md
+
 
 # Page default value
 # defaults:
