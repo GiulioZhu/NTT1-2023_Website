@@ -56,7 +56,6 @@ For the machine learning model architecture we opted for _MobileNetV2_ which is 
 
 We had the option of training the MobileNetV2 model from scratch but that would entail a long training period due to the computing resources at our disposal. There was also the risk of creating a less accurate model due to our limited training data. We therefore opted for a transfer learning approach of creating our custom model[^12]. For this we downloaded a headless version of the MobileNetV2 model with the final classification layer removed, which we fine tuned on our dataset of router features. This approach ensured that our model could take advantage of the existing model’s learned feature and removing the need to start from scratch by training an entirely new model[^13]. By only training the newly-added classifier layers and freezing layers of the base model, transfer learning provided us a way to quickly create an accurate model in an efficient manner.
 
-For our AI guidance feature we converted a user selected image into base64 and then sent the query to the _GPT 4 vision API_. The API response would then be displayed to the user in the text view. We set the model _temperature_ to zero and made use of prompt engineering techniques to prevent the large language model from hallucinating or demonstrating unpredictable behaviour[^14].
 
 ## Programming Languages
 ### Introduction
@@ -142,6 +141,10 @@ However, setting up and managing a PostgreSQL database, even with real-time exte
 In conclusion, considering the specific needs of the AR app - including real-time updates for meeting information, ease of setup and use, and the ability to scale dynamically - Firebase’s Realtime Database emerges as the superior choice, especially for first-time users and teams prioritizing rapid development and deployment. Its built-in real-time capabilities ensure that the application can efficiently manage the dynamic nature of meeting data. Firebase's ease of integration and management allows developers to focus on enhancing the app's core functionalities, making it the best option for this project.
 
 ## APIs
+
+### OpenAI GPT 4 vision API
+For our AI guidance feature we converted a user selected image into base64 and then sent the query to the _GPT 4 vision API_. The API response would then be displayed to the user in the text view. We set the model _temperature_ to zero and made use of prompt engineering techniques to prevent the large language model from hallucinating or demonstrating unpredictable behaviour[^14].
+
 ## Summary of Technical Decisions
 In summary we have decided to opt with Android development, using Android Studio with the Java programming language. For the video conferencing solution, we've opted to use the Jitsi meet SDK and Firebase realtime database to store the meetings. Furthermore, we choose to use MLKit for our object-detection, barcode scanning functionality, and to provide overlays. We also used the ChatGPT API in order to detect errors and give predictive maintenance.
 
