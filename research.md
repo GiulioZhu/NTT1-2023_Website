@@ -36,27 +36,27 @@ We considered our project _persona_ and _scenario_ and we discovered that **mobi
 
 ## Devices
 
-Our client gave us the freedom to choose Android or IOS as the operating system for our application. Since we were aiming moderately complicated application, we aimed to build a native phone application as it would be more performant and allow us to easily leverage native APIs to access device features[^5]. Therefore, we planned to employ either _Java_ or _Swift_ when developing our application instead of cross platform UI libraries such as _React native_ or _Flutter_.
+Our client gave us the freedom to choose Android or IOS as the operating system for our application. Since we were aiming moderately complicated application, we aimed to build a native phone application as it would be more performant and allow us to easily leverage native APIs to access device features[^3]. Therefore, we planned to employ either _Java_ or _Swift_ when developing our application instead of cross platform UI libraries such as _React native_ or _Flutter_.
 
 Both the Android SDK and IOS SDK provided all the necessary tooling and APIs that we needed to fulfil the client requirements. For instance, one of our main objectives was to use a custom machine learning model to detect router features and attach labels to objects for which Android’s _ML kit_ and IOS’s _Core ML_ would suffice. Furthermore Android and IOS both had excellent documentation, third party library support and large and active developer communities that ensured that we could efficiently and quickly implement features and resolve bugs.
 
 Our final decision came down to the devices readily available to us for development and the choice of programming language used with each operating system’s SDK.
 
-Two out of three teammates were using Android devices which would allow them to quickly download the app to their devices and test its functionality - something we needed to do quite often with an App that scanned the environment using the camera and viewfinder. Furthermore, for native IOS development a relatively modern apple(Mac OS) computer is required to install the _Xcode IDE_ to develop applications[^6]. Since our team had 2 Windows machines and 1 Macbook, we decided it would be wise to develop an Android application since all our devices were capable of running Android Studio and thus we could independently develop features of our app. Android studio also has built in support for emulators which can be used to see how code changes reflect in our application in real time.
+Two out of three teammates were using Android devices which would allow them to quickly download the app to their devices and test its functionality - something we needed to do quite often with an App that scanned the environment using the camera and viewfinder. Furthermore, for native IOS development a relatively modern apple(Mac OS) computer is required to install the _Xcode IDE_ to develop applications[^4]. Since our team had 2 Windows machines and 1 Macbook, we decided it would be wise to develop an Android application since all our devices were capable of running Android Studio and thus we could independently develop features of our app. Android studio also has built in support for emulators which can be used to see how code changes reflect in our application in real time.
 
-Android development is done primarily in Java/Kotlin[^7] while IOS development is done in Apple’s Swift programming language[^8]. As our team had previous experience working with Java due to our university module, we decided to opt for Android development as it would involve less of a learning curve than learning a completely new programming language such as Swift (and its associated Swift UI framework). This ensured we could quickly dive into the development process and start implementing features. Due to Google’s deep involvement with the Android project, we also received the benefit of deep integration within Google’s ecosystem of technologies such as _Firebase_[^9] and _Tensorflow_[^10]. This made it relatively straight forward for us to implement these technologies in our application.
+Android development is done primarily in Java/Kotlin[^5] while IOS development is done in Apple’s Swift programming language[^6]. As our team had previous experience working with Java due to our university module, we decided to opt for Android development as it would involve less of a learning curve than learning a completely new programming language such as Swift (and its associated Swift UI framework). This ensured we could quickly dive into the development process and start implementing features. Due to Google’s deep involvement with the Android project, we also received the benefit of deep integration within Google’s ecosystem of technologies such as Firebase[^7] and Tensorflow[^8]. This made it relatively straight forward for us to implement these technologies in our application.
 
 ## Algorithms
 
-A core feature of our application was to recognise Router features and apply labels over them. To achieve this, a custom machine learning model capable of recognising these features was needed. _ML kit_, the machine learning framework native to our Android application, required a _Tensorflow lite model_ for object detection which we had to create using the Tensorflow machine learning framework[^11].
+A core feature of our application was to recognise Router features and apply labels over them. To achieve this, a custom machine learning model capable of recognising these features was needed. _ML kit_, the machine learning framework native to our Android application, required a _Tensorflow lite model_ for object detection which we had to create using the Tensorflow machine learning framework[^9].
 
-To train a machine learning model We initially planned to use Firebase ML SDK. Although this service would have simplified the training process, it is primarily geared towards cloud hosted models and Google recommends using ML kit SDK for our target features of Object detection and Barcode scanning[^12].
+To train a machine learning model We initially planned to use Firebase ML SDK. Although this service would have simplified the training process, it is primarily geared towards cloud hosted models and Google recommends using ML kit SDK for our target features of Object detection and Barcode scanning[^10].
 
-For the machine learning model architecture we opted for _MobileNetV2_ which is convolutional neural network tuned to work on resource constrained devices such as mobile and IOT [^13]. Its streamlined architecture enables swift inference, crucial for real-time object detection applications on phones. Despite its compact size, MobileNetV2 maintains competitive accuracy, ensuring reliable performance without burdening the device's hardware. This is particularly beneficial for mobile applications where responsiveness and battery life are paramount. We also considered architectures such as MobileDET, Yolo and SSD (Single Shot Multibox Detector) however despite the speed and accuracy advantages over MobileNet, their relative complexities and higher resource requirements made them less suited for our use case.
+For the machine learning model architecture we opted for _MobileNetV2_ which is convolutional neural network tuned to work on resource constrained devices such as mobile and IOT[^11]. Its streamlined architecture enables swift inference, crucial for real-time object detection applications on phones. Despite its compact size, MobileNetV2 maintains competitive accuracy, ensuring reliable performance without burdening the device's hardware. This is particularly beneficial for mobile applications where responsiveness and battery life are paramount. We also considered architectures such as MobileDET, Yolo and SSD (Single Shot Multibox Detector) however despite the speed and accuracy advantages over MobileNet, their relative complexities and higher resource requirements made them less suited for our use case.
 
-We had the option of training the MobileNetV2 model from scratch but that would entail a long training period due to the computing resources at our disposal. There was also the risk of creating a less accurate model due to our limited training data. We therefore opted for a transfer learning approach of creating our custom model[^14]. For this we downloaded a headless version of the MobileNetV2 model with the final classification layer removed, which we fine tuned on our dataset of router features. This approach ensured that our model could take advantage of the existing model’s learned feature and removing the need to start from scratch by training an entirely new model[^15]. By only training the newly-added classifier layers and freezing layers of the base model, transfer learning provided us a way to quickly create an accurate model in an efficient manner.
+We had the option of training the MobileNetV2 model from scratch but that would entail a long training period due to the computing resources at our disposal. There was also the risk of creating a less accurate model due to our limited training data. We therefore opted for a transfer learning approach of creating our custom model[^12]. For this we downloaded a headless version of the MobileNetV2 model with the final classification layer removed, which we fine tuned on our dataset of router features. This approach ensured that our model could take advantage of the existing model’s learned feature and removing the need to start from scratch by training an entirely new model[^13]. By only training the newly-added classifier layers and freezing layers of the base model, transfer learning provided us a way to quickly create an accurate model in an efficient manner.
 
-For our AI guidance feature we converted a user selected image into base64 and then sent the query to the _GPT 4 vision API_. The API response would then be displayed to the user in the text view. We set the model _temperature_ to zero and made use of prompt engineering techniques to prevent the large language model from hallucinating or demonstrating unpredictable behaviour[^16].
+For our AI guidance feature we converted a user selected image into base64 and then sent the query to the _GPT 4 vision API_. The API response would then be displayed to the user in the text view. We set the model _temperature_ to zero and made use of prompt engineering techniques to prevent the large language model from hallucinating or demonstrating unpredictable behaviour[^14].
 
 ## Programming Languages
 
@@ -64,7 +64,7 @@ For our AI guidance feature we converted a user selected image into base64 and t
 
 Among our list of possible frameworks, we considered **Unity**, **Vuforia**, and **Android Studio** as potential solutions.
 
-**Unity** is a cross-platform engine that allows developers to build _3D and 2D games, apps, and experiences for entertainment, film, automotive, architecture, and more_. It uses C# and C++, and it supports a variety of platforms, including android and ios[^3]. It provides a robust and intuitive development environment, which is beginner-friendly and efficient for experienced developers. It also boasts of an extensive asset store contributed by the Unity community offering a wide range of completed assets to work with which simplifies the development process. It also allows performance optimization with its built-in tools, which ensures smooth performance across devices[^4].
+**Unity** is a cross-platform engine that allows developers to build _3D and 2D games, apps, and experiences for entertainment, film, automotive, architecture, and more_. It uses C# and C++, and it supports a variety of platforms, including android and ios[^15]. It provides a robust and intuitive development environment, which is beginner-friendly and efficient for experienced developers. It also boasts of an extensive asset store contributed by the Unity community offering a wide range of completed assets to work with which simplifies the development process. It also allows performance optimization with its built-in tools, which ensures smooth performance across devices[^16].
 
 **Vuforia** is a scalble AR content creation solution that transforms existing 3D CAD or product for mobile devices that enables the creation of augmented reality applications. Some of its features include _image targets, cloud recognition service, and barcode scanners_. This allows developers to quickly create recognition models, since cloud recognition service allows developers to upload images to the cloud and get recognition results in real-time without any requirement on training. It also supports a wide range of devices and platforms, including Android, iOS, and UWP and also provides a wide range of APIs and SDKs for developers to work with, which makes it a versatile tool for AR development.
 
@@ -77,20 +77,34 @@ Among our list of possible frameworks, we considered **Unity**, **Vuforia**, and
 <!-- i will add a comparison table here - Giuli, link: https://www.w3schools.com/howto/howto_css_comparison_table.asp -->
 
 # References
+[^1]: “AR Core,” Google Developers. https://developers.google.com/ar.
 
-[^1]: “AR Core,” Google Developers. https://developers.google.com/ar
-[^2]: “ML Kit,” Google Developers. https://developers.google.com/ml-kit
-[^3]: Unity Technologies, “Unity - Unity,” Unity, 2019. https://unity.com
-[^4]: X. Web, “Top Advantages of Using Unity for Game Development,” Medium, Jun. 19, 2023. https://medium.com/@xceltecweb/top-advantages-of-using-unity-for-game-development-bd64b6a3004
-[^5]: P. Manager, “Native App vs Cross-Platform: How to Make a Choice,” JatApp, Feb. 20, 2019. https://jatapp.co/blog/native-or-cross-platform-app-development/ (accessed Apr. 07, 2024).
-[^6]: Apple, “Xcode - Support - Apple Developer,” Apple.com, 2020. https://developer.apple.com/support/xcode/
-[^7]: Apple, “Swift,” Apple. https://www.apple.com/lae/swift(accessed Apr. 07, 2024).
-[^8]: Google, “Kotlin and Android,” Android Developers. https://developer.android.com/kotlin
-[^9]: Google, “Add Firebase to your Android project  |  Firebase,” Firebase, 2019. https://firebase.google.com/docs/android/setup
-[^10]: Google, “Custom Models with ML Kit,” Google Developers. https://developers.google.com/ml-kit/custom-models
-[^11]: Google, “TensorFlow Lite guide,” TensorFlow. https://www.tensorflow.org/lite/guide
-[^12]: Google, “Migration guide | ML Kit,” Google for Developers. https://developers.google.com/ml-kit/migration (accessed Apr. 07, 2024).
-[^13]: A. Howard et al., “Searching for MobileNetV3,” arXiv.org, 2019. https://arxiv.org/abs/1905.02244
-[^14]: N. Donges, “What is transfer learning? Exploring the popular deep learning approach,” Built In, Aug. 25, 2022. https://builtin.com/data-science/transfer-learning
-[^15]: Google, “Transfer learning with a pretrained ConvNet | TensorFlow Core,” TensorFlow. https://www.tensorflow.org/tutorials/images/transfer_learning
-[^16]: Code academy, “Intro to OpenAI API: Intro to OpenAI GPT API Cheatsheet,” Codecademy. https://www.codecademy.com/learn/intro-to-open-ai-gpt-api/modules/intro-to-open-ai-gpt-api/cheatsheet
+[^2]: “ML Kit,” Google Developers. https://developers.google.com/ml-kit.
+
+[^3]: P. Manager, “Native App vs Cross-Platform: How to Make a Choice,” JatApp, Feb. 20, 2019. https://jatapp.co/blog/.
+
+[^4]: Apple, “Xcode - Support - Apple Developer,” Apple.com, 2020. https://developer.apple.com/support/xcode/top-advantages-of-using-unity-for-game-development-bd64b6a3004native-or-cross-platform-app-development/ (accessed Apr. 07, 2024).
+
+[^5]: Apple, “Swift,” Apple. https://www.apple.com/lae/swift(accessed Apr. 07, 2024).
+
+[^6]: Google, “Kotlin and Android,” Android Developers. https://developer.android.com/kotlin.
+
+[^7]: Google, “Add Firebase to your Android project Firebase," Firebase, 2019. https://firebase.google.com/docs/android/setup.
+
+[^8]: Google, “Custom Models with ML Kit,” Google Developers. https://developers.google.com/ml-kit/custom-models.
+
+[^9]: Google, “TensorFlow Lite guide,” TensorFlow. https://www.tensorflow.org/lite/guide.
+
+[^10]: Google, “Migration guide ML Kit,” Google for Developers. https://developers.google.com/ml-kit/migration (accessed Apr. 07, 2024).
+
+[^11]: A. Howard et al., “Searching for MobileNetV3,” arXiv.org, 2019. https://arxiv.org/abs/1905.02244.
+
+[^12]: N. Donges, “What is transfer learning? Exploring the popular deep learning approach,” Built In, Aug. 25, 2022. https://builtin.com/data-science/transfer-learning.
+
+[^13]: Google, “Transfer learning with a pretrained ConvNet TensorFlow Core,” TensorFlow. https://www.tensorflow.org/tutorials/images/transfer_learning.
+
+[^14]: Code academy, “Intro to OpenAI API: Intro to OpenAI GPT API Cheatsheet,” Codecademy. https://www.codecademy.com/learn/intro-to-open-ai-gpt-api/modules/intro-to-open-ai-gpt-api/cheatsheet.
+
+[^15]: Unity Technologies, “Unity - Unity,” Unity, 2019. https://unity.com.
+
+[^16]: X. Web, “Top Advantages of Using Unity for Game Development,” Medium, Jun. 19, 2023. https://medium.com/@xceltecweb/.

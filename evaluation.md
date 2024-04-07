@@ -4,6 +4,9 @@ title: Evaluation
 ---
 # Summary of Achievements
 
+## Individual Contribution ##
+{% include individual-contribution.html %}
+
 # Critical Evaluation of the Project #
 
 # Future Work #
