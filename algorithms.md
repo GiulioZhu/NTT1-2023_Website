@@ -21,7 +21,7 @@ To obtain images of router features we dowloaded an existing dataset from RoboFl
 
 Our training methodology involved feeding the model individual images of particular categories, we thus needed to separate the features defined by each of the bounding boxes on the images. This ensured that we could have images of power switches stored in a different directory of images of LAN ports thus making it easy for us to load the labelled data set into our training workflow using the Keras API. The downloaded data set came with a CSV file containing the two dimensional coordinates of the bounding box, its associated label and image. Thus we had to write a simple python script to traverse the CSV file, find the image, crop the image as per the coordinates and save it in a directory named after its label.
 
-Before the images were used for training they were converted to a height and width of 224px so that they were in accordance with the expected input of the model. The images were then converted into `Numpy` arrays consisting of the RGB values from a scale of 0 to 255. These values were then normalised by dividing them 255 so they conform to input requirements of the MobileNetV2 model[^7] which accepts values in float 32 format.
+Before the images were used for training they were converted to a height and width of 224px so that they were in accordance with the expected input of the model. The images were then converted into `Numpy` arrays consisting of the RGB values from a scale of 0 to 255. These values were then normalised by dividing them 255 so they conform to input requirements of the MobileNetV2 model which accepts values in float 32 format.
 
 # **Performance comparison**
 
@@ -92,8 +92,13 @@ The overall performance of the models fell short of the team's expectations. Nev
 
 # References
 [^1]: A. Howard et al., “Searching for MobileNetV3,” arXiv.org, 2019. https://arxiv.org/abs/1905.02244
+
 [^2]: N. Donges, “What is transfer learning? Exploring the popular deep learning approach,” Built In, Aug. 25, 2022. https://builtin.com/data-science/transfer-learning
-[^3]: Google, “Transfer learning with a pretrained ConvNet | TensorFlow Core,” TensorFlow. https://www.tensorflow.org/tutorials/images/transfer_learning
+
+[^3]: Google, “Transfer learning with a pretrained ConvNet; TensorFlow Core,” TensorFlow. https://www.tensorflow.org/tutorials/images/transfer_learning
+
 [^4]: S.-H. Tsang, “Review: MobileNetV2 — Light Weight Model (Image Classification),” Medium, Aug. 01, 2019. https://towardsdatascience.com/review-mobilenetv2-light-weight-model-image-classification-8febb490e61c
+
 [^5]: J. Shi, W. Wang, Y. Gao, and N. Yu, “Optimal Placement and Intelligent Smoke Detection Algorithm for Wildfire-Monitoring Cameras,” IEEE Access PP, vol. 99, Apr. 2020.
+
 [^6]: Google, “Adding metadata to TensorFlow Lite models,” TensorFlow. https://www.tensorflow.org/lite/models/convert/metadata
