@@ -141,9 +141,10 @@ However, setting up and managing a PostgreSQL database, even with real-time exte
 
 In conclusion, considering the specific needs of the AR app - including real-time updates for meeting information, ease of setup and use, and the ability to scale dynamically - Firebase’s Realtime Database emerges as the superior choice, especially for first-time users and teams prioritizing rapid development and deployment. Its built-in real-time capabilities ensure that the application can efficiently manage the dynamic nature of meeting data. Firebase's ease of integration and management allows developers to focus on enhancing the app's core functionalities, making it the best option for this project.
 
-### Summary of Technical Decisions
-In summary we have decided to opt with Android development, using Android Studio with the Java programming language. For the video conferencing solution, we've opted to use the Jitsi meet SDK and Firebase realtime database to store the meetings. Furthermore, we choose to use MLKit for our object-detection, barcode scanning functionality, and to provide overlays. We also used the ChatGPT API in order to detect errors and give predictive maintenance.
 ## APIs
+## Summary of Technical Decisions
+In summary we have decided to opt with Android development, using Android Studio with the Java programming language. For the video conferencing solution, we've opted to use the Jitsi meet SDK and Firebase realtime database to store the meetings. Furthermore, we choose to use MLKit for our object-detection, barcode scanning functionality, and to provide overlays. We also used the ChatGPT API in order to detect errors and give predictive maintenance.
+
 
 <!-- i will add a comparison table here - Giuli, link: https://www.w3schools.com/howto/howto_css_comparison_table.asp -->
 
