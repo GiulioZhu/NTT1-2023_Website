@@ -8,6 +8,14 @@ These are the biweekly reports of our team.
 - <a href="/2023/group43/assets/images/misc/Team_43_Pitch_Presentation_1.pptx" download> Pitch Presentation 1</a>
 - <a href="/2023/group43/assets/images/misc/Team_43_Pitch_Presentation_2.pptx" download> Pitch Presentation 2</a>
 
+# Monthy Videos #
+
+## November
+
+<video width="640" height="360" controls>
+  <source src="assets\Videos\MonthlyVideos\November.mp4" type="video/mp4">
+</video>
+
 # Deployment Manual #
 - [Deployment Manual](/2023/group43/deploymentManual)
 

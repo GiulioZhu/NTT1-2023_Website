@@ -1,0 +1,14 @@
+---
+layout: post
+title: Week 13-14
+categories: markdown
+---
+### Week 13-14 (W/C Monday 1st January):
+
+In the previous two weeks we started working on the report website, figuring out what to use to create our static site. 
+
+We also had to make adjustments to our UI design based on the design features available on Android studio
+
+Additionally, we started working on creating the viewfinder and experimenting with different APIs as initally we had created a bare viewfinder without MLKits integration to it.
+
+We also setup the website with thinlinc and finished creating the elevator pitch 1.
