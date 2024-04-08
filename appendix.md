@@ -9,6 +9,7 @@ These are the biweekly reports of our team.
 - <a href="/2023/group43/assets/images/misc/Team_43_Pitch_Presentation_2.pptx" download> Pitch Presentation 2</a>
 
 # Deployment Manual #
+- [Deployment Manual](/2023/group43/deploymentManual)
 
 # User Manual #
 - [User Manual](/2023/group43/userManual)
