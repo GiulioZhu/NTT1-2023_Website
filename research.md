@@ -143,7 +143,7 @@ In conclusion, considering the specific needs of the AR app - including real-tim
 ## APIs
 
 ### OpenAI GPT 4 vision API
-For our AI guidance feature we converted a user selected image into base64 and then sent the query to the _GPT 4 vision API_. The API response would then be displayed to the user in the text view. We set the model _temperature_ to zero and made use of prompt engineering techniques to prevent the large language model from hallucinating or demonstrating unpredictable behaviour[^23].
+For our AI guidance feature we converted a user selected image into base64 and then sent the query to the _GPT 4 vision API_. The API response would then be displayed to the user in the text view. We set the model _temperature_ to zero and made use of prompt engineering techniques to prevent the large language model from hallucinating or demonstrating unpredictable behaviour.
 
 ## Summary of Technical Decisions
 In summary we have decided to opt with Android development, using Android Studio with the Java programming language. For the video conferencing solution, we've opted to use the Jitsi meet SDK and Firebase realtime database to store the meetings. Furthermore, we choose to use MLKit for our object-detection, barcode scanning functionality, and to provide overlays. We also used the ChatGPT API in order to detect errors and give predictive maintenance.
