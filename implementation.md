@@ -20,15 +20,170 @@ This is the main feature of our application. By scanning over the routers, it de
 - **Object Dector Processor**: Using the camera to _scan object, create overlays on the detected components, and label them accordingly_. The code for this feature is present in the `com.example.arapprouterjava/junior/java/objectdetector` package, with `ObjectDetectorProcessor.java` as the main file, and `ObjectGraphic.java` as its dependency. The two classes in this package are responsible for processing and giving labels to the detected objects. However, without an actual ML model to work with, this feature is incomplete. For instance, it can create overlays on the detected objects, but it cannot label them.
 - The second unit is the **ML model** itself. This model is responsible for recognizing the physical components of the router. In our project, this model is trained separately following the Transfer Learning method, using the MobileNetV2 model, and is the imported into our project in the `app/assets/custom_models/MobileNetV2_transfer_learning.tflite`.
 
-The main code for connecting these 2 units is present in the 'LivePreviewActivity.java' file. from line 346-356. This code basically loads the recognition model for the detector, so that camera can correctly detected and label the router.
+```java
+public class ObjectDetectorProcessor extends VisionProcessorBase<List<DetectedObject>> {
+
+  private static final String TAG = "ObjectDetectorProcessor";
+
+  private final ObjectDetector detector;
+
+  public ObjectDetectorProcessor(Context context, ObjectDetectorOptionsBase options) {
+    super(context);
+    detector = ObjectDetection.getClient(options);
+  }
+
+  @Override
+  public void stop() {
+    super.stop();
+    detector.close();
+  }
+
+  @Override
+  protected Task<List<DetectedObject>> detectInImage(InputImage image) {
+    return detector.process(image);
+  }
+
+  @Override
+  protected void onSuccess(
+      @NonNull List<DetectedObject> results, @NonNull GraphicOverlay graphicOverlay) {
+    for (DetectedObject object : results) {
+      graphicOverlay.add(new ObjectGraphic(graphicOverlay, object));
+    }
+  }
+
+  @Override
+  protected void onFailure(@NonNull Exception e) {
+    Log.e(TAG, "Object detection failed!", e);
+  }
+}
+```
 
 ## Barcode Scanning
 
 This is a secondary feature of our application. It allows the junior engineer to _scan the barcode behind the router, which fetches the router's serial number_. This serial number is then used to fetch the router's details from the database. The code for this feature is present in the `com.example.arapprouterjava/junior/java/barcodescanner` package, with `BarcodeScannerProcessor.java` as the main file, and `BarcodeScanningGraphic.java` as its dependency. The two classes in this package follow a similar structure to the Object Detector feauture, with the `BarcodeScannerProcessor.java` being responsible for processing the barcode, and the `BarcodeScanningGraphic.java` for creating overlays on the detected barcode.
 
+```java
+public class BarcodeScannerProcessor extends VisionProcessorBase<List<Barcode>> {
+  private static final String TAG = "BarcodeProcessor";
+
+  private final BarcodeScanner barcodeScanner;
+
+  public BarcodeScannerProcessor(Context context, @Nullable ZoomCallback zoomCallback) throws IOException {
+    super(context);
+//     Note that if you know which format of barcode your app is dealing with, detection will be
+//     faster to specify the supported barcode formats one by one, e.g.
+     new BarcodeScannerOptions.Builder()
+         .setBarcodeFormats(Barcode.FORMAT_QR_CODE)
+         .build();
+    if (zoomCallback != null) {
+      BarcodeScannerOptions options =
+          new BarcodeScannerOptions.Builder()
+              .setZoomSuggestionOptions(new ZoomSuggestionOptions.Builder(zoomCallback).build())
+              .build();
+      barcodeScanner = BarcodeScanning.getClient(options);
+    } else {
+      barcodeScanner = BarcodeScanning.getClient();
+    }
+  }
+
+  @Override
+  public void stop() {
+    super.stop();
+    barcodeScanner.close();
+  }
+
+  @Override
+  protected Task<List<Barcode>> detectInImage(InputImage image) {
+    return barcodeScanner.process(image);
+  }
+
+  @Override
+  protected void onSuccess(
+      @NonNull List<Barcode> barcodes, @NonNull GraphicOverlay graphicOverlay) {
+    if (barcodes.isEmpty()) {
+      Log.v(MANUAL_TESTING_LOG, "No barcode has been detected");
+    }
+  }
+
+  @Override
+  protected void onFailure(@NonNull Exception e) {
+    Log.e(TAG, "Barcode detection failed " + e);
+  }
+}
+```
+
 ## User Manual
 
 This is a complementary feature of our application. _It provides a wide selection of user manual for the junior engineer to select from and displays them as a readable pdf, which guides him/her on how to solve router issues_. The code for this feature is present in `com.example.arapprouterjava/junior/java/preference/ManualPage.java`, this code is mainly responsible of displaying the pdf file, given its path. The pdf files are stored in the `app/assets/user_manuals` folder, and we fetch them using the `AssetManager` class.
+
+```java
+public class ManualPage extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+    PDFView pdfView;
+    private final List<String> manual_names = new ArrayList<>();
+    private static final String TAG = "INFO";
+    private final List<String> manual_paths = new ArrayList<>();
+    private final Hashtable<String, String> manuals = new Hashtable<>();
+
+    @Override
+    protected void onCreate (Bundle savedInstanceState) {
+        try {
+            loadManuals();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.manual_page);
+        Spinner spinner = findViewById(R.id.spinner_manual);
+
+
+
+        // Creating adapter for spinner
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, R.layout.spinner_style, manual_names);
+        // Drop down layout style - list view with radio button
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // attaching data adapter to spinner
+        spinner.setAdapter(dataAdapter);
+        spinner.setOnItemSelectedListener(this);
+    }
+
+        private void loadManuals() throws IOException {
+        AssetManager assets = getAssets();
+        String[] path_list = assets.list("user_manuals");
+        assert path_list != null;
+        for (String manual: path_list) {
+            String manual_name = manual.substring(0, manual.length()-4);
+            manual_names.add(manual_name);
+            manual_paths.add(manual);
+            manuals.put(manual_name, manual);
+        }
+    }
+}
+```
+
+There is also a "spinner", which is a selector at the bottom of the page, which allows the user to select the diffrerent manuals. This code is also present in the `ManualPage.java` file.
+```java
+    @Override
+    public synchronized void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+        String selected = parent.getItemAtPosition(pos).toString();
+        pdfView = findViewById(R.id.pdfView);
+        Log.println(Log.INFO,TAG,"Selected Manual: " + selected);
+        pdfView.fromAsset("user_manuals/"+ selected +".pdf")
+                .enableSwipe(false)
+                .swipeHorizontal(true)
+                .enableDoubletap(true)
+                .defaultPage(0)
+                .pageFitPolicy(FitPolicy.WIDTH)
+                .enableAntialiasing(true)
+                .spacing(0)
+                .load();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+        // Do nothing
+    }
+```
+
 
 ## Video Conferencing
 

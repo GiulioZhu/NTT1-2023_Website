@@ -15,6 +15,9 @@ To address this challenge, we have developed an augmented reality (AR) mobile ap
 
 The AR-based router diagnostics app streamlines the troubleshooting process, reducing diagnostic time and training time. By assisting junior engineers with guidance and collaboration with senior engineers, the app allows for better field efficiency and customer satisfaction. Furthermore, the integration of suggestive maintenance powered by GPT-4 ensures proactive problem-solving, reducing the overall maintenance costs. This solution will help junior engineers get a stable footing in the industry while ensuring a high quality of service provided for customers.
 # Features #
+- **AR Router Detection**: The app uses AR technology to detect and identify router components, providing real-time analysis and guidance.
+- **Video Conferencing**: Junior engineers can initiate video conferences with senior engineers for remote assistance and collaboration.
+- **Suggestive Maintenance**: The app provides suggestive maintenance solutions powered by GPT-4 API, enabling proactive problem-solving.
 
 # Video #
 <video width="320" height="240" controls>
@@ -26,6 +29,5 @@ During the course of this project, our team took turns in team leading. Team lea
 
 {% include our-team.html %}
 
-
-
 # Project Timeline #
+![Gantt Chart](/2023/group43/assets/images/home/Gantt_chart.png)
