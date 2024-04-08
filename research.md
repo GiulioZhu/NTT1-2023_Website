@@ -168,16 +168,15 @@ In summary we have decided to opt with Android development, using Android Studio
 [^14]: Code academy, “Intro to OpenAI API: Intro to OpenAI GPT API Cheatsheet,” Codecademy. https://www.codecademy.com/learn/intro-to-open-ai-gpt-api/modules/intro-to-open-ai-gpt-api/cheatsheet.
 [^15]: Unity Technologies, “Unity - Unity,” Unity, 2019. https://unity.com.
 [^16]: X. Web, “Top Advantages of Using Unity for Game Development,” Medium, Jun. 19, 2023. https://medium.com/@xceltecweb/.
-‌[^17] Wikipedia, ".NET Framework," [Online]. Available: https://en.wikipedia.org/wiki/.NET_Framework. [Accessed: 23-Mar-2024].
+‌[^17]: Wikipedia, ".NET Framework," [Online]. Available: https://en.wikipedia.org/wiki/.NET_Framework. [Accessed: 23-Mar-2024]
+[^18]: Microsoft, "What is .NET Framework?," [Online]. Available: https://dotnet.microsoft.com/en-us/learn/dotnet/what-is-dotnet-framework. [Accessed: 23-Mar-2024]
 
-[^18] Microsoft, "What is .NET Framework?," [Online]. Available: https://dotnet.microsoft.com/en-us/learn/dotnet/what-is-dotnet-framework. [Accessed: 23-Mar-2024].
+[^19]: Microsoft, ".NET Documentation," [Online]. Available: https://docs.microsoft.com/en-us/dotnet/. [Accessed: 23-Mar-2024]
 
-[^19] Microsoft, ".NET Documentation," [Online]. Available: https://docs.microsoft.com/en-us/dotnet/. [Accessed: 23-Mar-2024].
+[^20]: Wikipedia Contributors, “Java (programming language),” [Online] *Wikipedia*, Mar. 29, 2019. https://en.wikipedia.org/wiki/Java_%28programming_language%29 [Accessed: 23-Mar-2024]
 
-[^20]Wikipedia Contributors, “Java (programming language),” [Online] *Wikipedia*, Mar. 29, 2019. https://en.wikipedia.org/wiki/Java_%28programming_language%29 [Accessed: 23-Mar-2024]
+[^21]:  “Java Architecture and its Components  JVM, JRE, and JDK,” [Online] *Edureka*, Jul. 25, 2019. https://www.edureka.co/blog/java-architecture/ [Accessed: 23-Mar-2024]
 
-[^21]  “Java Architecture and its Components  JVM, JRE, and JDK,” [Online] *Edureka*, Jul. 25, 2019. https://www.edureka.co/blog/java-architecture/ [Accessed: 23-Mar-2024]
+[^22]: Apple Inc., "Swift Programming Language," Apple Developer Documentation, 2023. [Online]. Available: https://developer.apple.com/swift/. [Accessed: Mar. 23, 2024]
 
-[^22]Apple Inc., "Swift Programming Language," Apple Developer Documentation, 2023. [Online]. Available: https://developer.apple.com/swift/. [Accessed: Mar. 23, 2024].
-
-[^23]“AR Foundation  AR Foundation  5.1.0-pre.2,”[Online] *docs.unity3d.com*. https://docs.unity3d.com/Packages/com.unity.xr.arfoundation@5.1/manual/index.html [Accessed: Mar. 23, 2024].
+[^23]: “AR Foundation  AR Foundation  5.1.0-pre.2,”[Online] *docs.unity3d.com*. https://docs.unity3d.com/Packages/com.unity.xr.arfoundation@5.1/manual/index.html [Accessed: Mar. 23, 2024]

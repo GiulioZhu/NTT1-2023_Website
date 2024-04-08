@@ -209,16 +209,15 @@ Broadcasting:
 
 Calling the Jitsi SDK to start a meeting:
 
-- In order to start a Jitsi meeting, there are a few repositories and imports required:
-    - The repositories required within the setting.gradle file are as follows:
+- The repositories required within the setting.gradle file are as follows:
         - `google(),`
         - `mavenCentral()`
-        - `maven **{**    url "https://github.com/jitsi/jitsi-maven-repository/raw/master/releases"}`
-        - `maven **{**    url "https://maven.google.com/"`
-        - `maven **{** url 'https://www.jitpack.io/' **}**`
-    - The dependency required for the Jitsi SDK is:
+        - `maven {    url "https://github.com/jitsi/jitsi-maven-repository/raw/master/releases"}`
+        - `maven {    url "https://maven.google.com/"`
+        - `maven { url 'https://www.jitpack.io/' }`
+- The dependency required for the Jitsi SDK is:
         - `implementation('org.jitsi.react:jitsi-meet-sdk:9.0.0') **{** transitive = true **}**`
-    - The classes required for Jitsi Meet Activity and my implementation of the Jitsi SDK are:
+- The classes required for Jitsi Meet Activity and my implementation of the Jitsi SDK are:
         - `org.jitsi.meet.sdk.JitsiMeet;`
         - `org.jitsi.meet.sdk.JitsiMeetActivity;`
         - `org.jitsi.meet.sdk.JitsiMeetConferenceOptions;`
@@ -248,7 +247,7 @@ Note: The repositories, dependencies, and classes I have mentioned for the senio
 
 Overall Flow:
 
-Located in the LivePreviewActivity.java class. When the call button is clicked, the junior activity is launched, the Firebase database reference is initialised and the local broadcast manager is initialised. Then the `onCreate()` function is first run, which initially set up the content view which is defined in the specified XML file. Then a function is run to set up the broadcast receiver(details explained below). The app then queries the database and looks for an open meeting, if there are no open meetings a toast message is displayed that says “Please try again later”. The code establishes a connection to the Firebase Realtime Database through the unique URL in the `onCreate()` function and retrieves a reference to the "Meetings" node. When the call button is clicked, it adds a listener for a single value event on the "Meetings" node. Inside the `onDataChange()` method, the code iterates through all children (meetings) under the "Meetings" node. For each meeting, it extracts the number of participants. If a meeting has exactly one participant, the code retrieves the meeting name and launches the Jitsi video conferencing session with that name. If no meeting with one participant is found, the code displays a Toast message indicating no available meetings. The `onCancelled` method handles any errors occurring during the database operation.
+Located in the LivePreviewActivity.java class. When the call button is clicked, the junior activity is launched, the Firebase database reference is initialised and the local broadcast manager is initialised. Then the `onCreate()` function is first run, which initially set up the content view which is defined in the specified XML file. Then a function is run to set up the broadcast receiver(details explained below). The app then queries the database and looks for an open meeting, if there are no open meetings a toast message is displayed that says “Please try again later”. The code establishes a connection to the Firebase Realtime Database through the unique URL in the `onCreate()` function and retrieves a reference to the "Meetings" node. When the call button is clicked, it adds a listener for a single value event on the "Meetings" node. Inside the `onDataChange()` method, the code iterates through all children (meetings) under the "Meetings" node. For each meeting, it extracts the number of participants. If a meeting has exactly one participant, the code retrieves the meeting name and launches the Jitsi video conferencing session with that name. If no meeting with one participant is found, the code displays a Toast message indicating no available meetings. The `onCancelled`method handles any errors occurring during the database operation.
 
 Broadcasting:
 
