@@ -37,25 +37,25 @@ In all, the app is functional and meets the requirements set out in the project 
 **Stability**
 There were issues in terms of testing and deployments in terms of Unit Testing, Integration Testing and Deployment. We have conducted unit tests for each module and integration tests for the whole application. However, we were not able to debug issues.
 
-There is room 
+There is room for improvement in terms of testing and debugging. We give ourselves Fair for stability.
 
 **Efficiency**
-Performance and efficiency has been a key part of our concerns throughout the project cycle. This is a major reason why we adopted Swift as our main development language. Throughout our development process, we used Instrument, a profiler made for iOS applications to keep track of the network and CPU load of our application. When there is an improvement can be made, as stated in the Multi-Threading and Task Queueing section, we made our best effort to utilise technologies we have to make it faster. We also adopted predictive pre-fetching and pre-loading techniques to flatten the network curve. All these measures are worthwhile as we present you our performance testing results, which is 100% faster than similar applications, taking half its time to perform most actions.
+In terms of performance, our app runs smoothly and efficiently. We have optimised the app to reduce latency, improve the user experience, and increase the FPS of the camera. We have also optimised the app to reduce memory usage and improve the app's performance.
 
 We think we have done a good job and give ourselves Very Good for these optimisations done due to efficiency concerns.
 
 **Compatibility**
-As this project started with Swift 5, we considered certain aspects of backwards compatibility to make sure we can run our application on relatively older devices. For newer features, we used #available tag provided in Swift to optionally activate some of them when they are supported. However, due to design, implementation and time frame concerns, we were not able to rewrite some parts of our application to make it backwards compatible to iOS 11.0-. We conducted testing with past 3 OS images on our CI platform, Travis. However, it slows down our deployment process significant if we conduct tests on all platforms. Therefore, we can only limit it to 3. There are definitely work can be done to enhance support for much older devices, e.g. iPhone 6, iPod Touch 6 and iPad 4. Given the fact we don't have these devices and the simulator doesn't support older OSes, we would have to limit our support devices to those compatible with iOS 12.0+ and ideal ones to iOS 13.0+.
+As this project started with Android API 30, we have made sure that our app is compatible with Android API 30 and above. We have also tested the app on multiple devices to ensure compatibility. However, we have not tested the app on older devices and cannot guarantee compatibility with older devices.
 
-There are definitely rooms for improvement on this aspect and we give ourselves Good for backwards compatibility.
+There are definitely rooms for improvement on this aspect and we give ourselves Good for compatibility.
 
 **Maintainability**
-The code base overall is well-documented and can be extended easily as long as it conforms to our interface. We utilised multiple Design Patterns to make sure our code is highly cohesive and loosely coupled. Each module is thoroughly unit-tested and guaranteed to work on its own. Our client has been well informed of the code base from a technical perspective and fully understands how each module work together as an application.
+The code base overall is documented and can be extended easily as long as it conforms to our interface. We utilised some Design Patterns to make sure our code is highly cohesive and loosely coupled. We have provided comments and deployment manual for future developers to understand the codebase and deploy the app.
 
-Given the code being well-maintained, we recognise our work as Very Good from a maintainability point of view.
+Given the code being well-maintained, we recognise our work as Good from a maintainability point of view.
 
 **Project Management**
-We only have 2 members in the team. This has both its advantage and disadvantages. Although we have one less person to work with, our teams saves a lot of communication and synchronising effort. We were able to communicate easily and quickly without having schedule a specific time to meet up. As mentioned earlier, we utilised GitHub's issue tracker for this type of basic project management and archived good result. Every team member is clear when it comes up what to do and what are the next steps. Eventually, we are able to finish ahead of our schedule and put some extra effort into optimisations, as well as licensing issues. Retrospectively, we could have used Jira which makes the management process clearer yet more complicated. We are not sure if Jira would make the process better overall.
+Our team was able to communicate easily and quickly throughout Whatsapp and Teams, and collaboratively worked on Github. Every team member is clear about his own tasks. Eventually, we are able to finish the requirements and deliver the project on time.
 
 Our team had a well managed project and we give ourselves Very Good for project management.
 
