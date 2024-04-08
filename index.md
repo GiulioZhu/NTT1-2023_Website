@@ -20,8 +20,9 @@ The AR-based router diagnostics app streamlines the troubleshooting process, red
 - **Suggestive Maintenance**: The app provides suggestive maintenance solutions powered by GPT-4 API, enabling proactive problem-solving.
 
 # Video #
-<video width="320" height="240" controls>
-  <source src="/2023/group43/assets/misc/Team_43_Presentation.mp4" type="video/mp4">
+
+<video width="960" height="720" controls>
+  <source src="/2023/group43/assets/images/misc/Team_43_Pitch_Presentation_2.mp4" type="video/mp4">
 </video>
 
 # Our Team #
