@@ -13,7 +13,31 @@ These are the biweekly reports of our team.
 ## November
 
 <video width="640" height="360" controls>
-  <source src="assets\Videos\MonthlyVideos\November.mp4" type="video/mp4">
+  <source src="assets/Videos/MonthlyVideos/November.mp4" type="video/mp4">
+</video>
+
+## December
+
+<video width="640" height="360" controls>
+  <source src="assets/Videos/MonthlyVideos/December.mp4" type="video/mp4">
+</video>
+
+## January
+
+<video width="640" height="360" controls>
+  <source src="assets/Videos/MonthlyVideos/January.mp4" type="video/mp4">
+</video>
+
+## February
+
+<video width="640" height="360" controls>
+  <source src="assets/Videos/MonthlyVideos/February.mp4" type="video/mp4">
+</video>
+
+## March
+
+<video width="640" height="360" controls>
+  <source src="assets/Videos/MonthlyVideos/March.mp4" type="video/mp4">
 </video>
 
 # Deployment Manual #
