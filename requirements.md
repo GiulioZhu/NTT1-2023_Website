@@ -181,7 +181,10 @@ To boost productivity and reduce his onsite visits, Maxwell seeks user-friendly 
 | 7 | Suggest possible fixes for router issues | COULD HAVE | ✅ |
 | 8 | Use Large language models for information gathering and question answering based on manuals | COULD HAVE | ❌ |
 
+
 # Moscow List(Non-Functional)
+
+
 | ID | Requirement | Priority | Status |
 | --- | --- | --- | --- |
 | 1 | The application must render AR elements and respond to user interactions within 2 seconds. | Must Have | ✅ |
@@ -190,7 +193,7 @@ To boost productivity and reduce his onsite visits, Maxwell seeks user-friendly 
 | 4 | All user data must be encrypted in transit and at rest. | Must Have | ✅|
 | 5 | The system should support concurrent video calls and database operations as user base grows. | Should Have | ✅ |
 | 6 | UI/UX should follow best practices for accessibility and ease of use. | Should Have | ✅ |
-| 7 | Comprehensive documentation for maintenance and extending the app’s capabilities. | Should Have | ✅ |
+| 7 | Comprehensive documentation for maintenance and extending the app's capabilities. | Should Have | ✅ |
 | 8 | Automatically adjust video quality based on internet bandwidth. | Could Have | ✅ |
 | 9 | Allow users to personalize settings, such as notification preferences or theme colors. | Could Have | ❌ |
 | 10 | No development for platforms other than Android at this stage. | Won't Have | ❌ |
