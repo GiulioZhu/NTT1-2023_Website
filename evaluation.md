@@ -4,15 +4,15 @@ title: Evaluation
 ---
 # Summary of Achievements
 
-| Id | Requirement | Priority | Status |
+| Id | Requirement | Priority | Status | Contributors|
 | --- | --- | --- | --- |
-| 1 | An Augmented Reality (AR) capable Android application | MUST | ✅ |
-| 2 | Identify router features and apply appropriate labels over them | MUST | ✅ |
-| 3 | Video conferencing with high quality video feed, call controls, and screen sharing | MUST | ✅ |
-| 4 | Access router manuals from the application | MUST | ✅ |
-| 5 | Detect router issues based on diagnostic LED light | MUST | ✅ |
-| 6 | Recognise router model using barcode scanning | MUST | ✅ |
-| 7 | Suggest possible fixes for router issues | COULD HAVE | ✅ |
+| 1 | An Augmented Reality (AR) capable Android application | MUST | ✅ | Ahmed, Ayman, Giulio |
+| 2 | Identify router features and apply appropriate labels over them | MUST | ✅ |Ahmed |
+| 3 | Video conferencing with high quality video feed, call controls, and screen sharing | MUST | ✅ |Ayman  |
+| 4 | Access router manuals from the application | MUST | ✅ | Giulio |
+| 5 | Detect router issues based on diagnostic LED light | MUST | ✅ | Ahmed |
+| 6 | Recognise router model using barcode scanning | MUST | ✅ | Giulio |
+| 7 | Suggest possible fixes for router issues | COULD HAVE | ✅ | Ahmed|
 | 8 | Use Large language models for information gathering and question answering based on manuals | COULD HAVE | ❌ |
 
 ## Individual Contribution ##

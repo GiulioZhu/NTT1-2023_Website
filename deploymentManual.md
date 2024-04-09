@@ -21,6 +21,11 @@ git clone https://github.com/Ahmed-Ansari02/COMP0016-NTT1-2023-.git
 or access to our github repository at https://github.com/Ahmed-Ansari02/COMP0016-NTT1-2023-.git and download the zip file.
 ![Github Page](/2023/group43/assets/images/appendix/Github_page.png)
 
+# Add OpenAI API key:
+1. Create an OpenAI API account
+2. Navigate to the API key page and "Create new secret key".
+3. Go to local.properties file of the cloned repository and add GPT_API_KEY = YOUR_API_KEY. *YOUR_API_KEY* should be the API key obtained from the last step.
+
 # Build and Run #
 1. Open Android Studio and at the top of the page select `File` > `Open File or Project` and select the folder where you cloned the repository. (To know if you selected the correct folder, the selected folder should have an android icon on the left side of the folder name)
 ![Open Project](/2023/group43/assets/images/appendix/Importing_folder.png)
