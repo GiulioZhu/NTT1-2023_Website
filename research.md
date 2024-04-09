@@ -155,9 +155,9 @@ In summary we have decided to opt with Android development, using Android Studio
 
 [^3]: P. Manager, “Native App vs Cross-Platform: How to Make a Choice,” JatApp, Feb. 20, 2019. https://jatapp.co/blog/.
 
-[^4]: Apple, “Xcode - Support - Apple Developer,” Apple.com, 2020. https://developer.apple.com/support/xcode/top-advantages-of-using-unity-for-game-development-bd64b6a3004native-or-cross-platform-app-development/ (accessed Apr. 07, 2024).
+[^4]: Apple, “Xcode - Support - Apple Developer,” Apple.com, 2020. https://developer.apple.com/support/xcode/top-advantages-of-using-unity-for-game-development-bd64b6a3004native-or-cross-platform-app-development/ (accessed November 30th, 2023).
 
-[^5]: Apple, “Swift,” Apple. https://www.apple.com/lae/swift(accessed Apr. 07, 2024).
+[^5]: Apple, “Swift,” Apple. https://www.apple.com/lae/swift(accessed Dec. 10, 2023).
 
 [^6]: Google, “Kotlin and Android,” Android Developers. https://developer.android.com/kotlin.
 
@@ -167,7 +167,7 @@ In summary we have decided to opt with Android development, using Android Studio
 
 [^9]: Google, “TensorFlow Lite guide,” TensorFlow. https://www.tensorflow.org/lite/guide.
 
-[^10]: Google, “Migration guide ML Kit,” Google for Developers. https://developers.google.com/ml-kit/migration (accessed Apr. 07, 2024).
+[^10]: Google, “Migration guide ML Kit,” Google for Developers. https://developers.google.com/ml-kit/migration (accessed December 19th, 2023).
 
 [^11]: A. Howard et al., “Searching for MobileNetV3,” arXiv.org, 2019. https://arxiv.org/abs/1905.02244.
 
@@ -175,17 +175,17 @@ In summary we have decided to opt with Android development, using Android Studio
 
 [^13]: Google, “Transfer learning with a pretrained ConvNet TensorFlow Core,” TensorFlow. https://www.tensorflow.org/tutorials/images/transfer_learning.
 
-[^14]: Microsoft, "What is .NET Framework?," [Online]. Available: https://dotnet.microsoft.com/en-us/learn/dotnet/what-is-dotnet-framework. [Accessed: 23-Mar-2024]
+[^14]: Microsoft, "What is .NET Framework?," [Online]. Available: https://dotnet.microsoft.com/en-us/learn/dotnet/what-is-dotnet-framework. [Accessed: 20-Nov-2023]
 
-[^15]: Microsoft, ".NET Documentation," [Online]. Available: https://docs.microsoft.com/en-us/dotnet/. [Accessed: 23-Mar-2024]
+[^15]: Microsoft, ".NET Documentation," [Online]. Available: https://docs.microsoft.com/en-us/dotnet/. [Accessed: 01-Dec-2023]
 
-[^16]: Wikipedia Contributors, “Java (programming language),” [Online] *Wikipedia*, Mar. 29, 2019. https://en.wikipedia.org/wiki/Java_%28programming_language%29 [Accessed: 23-Mar-2024]
+[^16]: Wikipedia Contributors, “Java (programming language),” [Online] *Wikipedia*, Mar. 29, 2019. https://en.wikipedia.org/wiki/Java_%28programming_language%29 [Accessed: 05-Dec-2023]
 
-[^17]:  “Java Architecture and its Components  JVM, JRE, and JDK,” [Online] *Edureka*, Jul. 25, 2019. https://www.edureka.co/blog/java-architecture/ [Accessed: 23-Mar-2024]
+[^17]:  “Java Architecture and its Components  JVM, JRE, and JDK,” [Online] *Edureka*, Jul. 25, 2019. https://www.edureka.co/blog/java-architecture/ [Accessed: 05-Dec-2023]
 
-[^18]: Apple Inc., "Swift Programming Language," Apple Developer Documentation, 2023. [Online]. Available: https://developer.apple.com/swift/. [Accessed: Mar. 23, 2024]
+[^18]: Apple Inc., "Swift Programming Language," Apple Developer Documentation, 2023. [Online]. Available: https://developer.apple.com/swift/. [Accessed: December 13th, 2023]
 
-[^19]: “AR Foundation  AR Foundation  5.1.0-pre.2,”[Online] *docs.unity3d.com*. https://docs.unity3d.com/Packages/com.unity.xr.arfoundation@5.1/manual/index.html [Accessed: Mar. 23, 2024]
+[^19]: “AR Foundation  AR Foundation  5.1.0-pre.2,”[Online] *docs.unity3d.com*. https://docs.unity3d.com/Packages/com.unity.xr.arfoundation@5.1/manual/index.html [Accessed: December 16th, 2023]
 
 [^20]: Unity Technologies, “Unity - Unity,” Unity, 2019. https://unity.com.
 

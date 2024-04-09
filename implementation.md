@@ -187,7 +187,7 @@ There is also a "spinner", which is a selector at the bottom of the page, which 
 
 ## Video Conferencing
 
-In order to implement video conferencing I choose to use the Jitsi SDK and to store these meetings I chose to use the Firebase real-time database.
+In order to implement video conferencing I chose to use the Jitsi SDK and to store these meetings I chose to use the Firebase real-time database.
 
 ### Senior engineer side:
 

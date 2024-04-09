@@ -61,6 +61,8 @@ Our team had a well managed project and we give ourselves Very Good for project 
 
 # Future Work #
 If we had more time, we would have liked to implement the following features:
+- Taking pictures directly from camera and querying them through GPT instead of selecting an image.
 - Barcode Scanner feature allows the user to open the specific manual related to the product scanned.
 - Improvements on the router detection ML model to increase accuracy.
 - Improving the router manual UI to make it more readable and user-friendly.
+- Automatic PiP mode when screen-share button is clicked for the junior engineer.
