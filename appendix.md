@@ -54,5 +54,3 @@ These are the biweekly reports of our team.
 
 Please review the following documents before downloading or using our software:
 {% include EULA.html %}
-
-# Monthly Video
