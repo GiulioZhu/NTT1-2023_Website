@@ -30,7 +30,7 @@ In all, We give ourselves Good for our UI work.
 
 **Functionality**
 In relation to the proposed requirements and the Moscow list, we have successfully implemented all the MUST requirements and left out 1 COULD HAVE requirement. 
-Based on the completed functionalities, the application is able to detect router features, apply labels, initiate video conferencing, access router manuals, detect router issues, and recognise router models and suggests possible fixes for router issues.
+Based on the completed functionalities, the application is able to detect router features, apply labels, initiate video conferencing, access router manuals, detect router issues, and recognise router models and suggests possible fixes for router issues. Features such as Barcode scanning and router feature detection are functional but further refinement is required to improve them further. 
 
 In all, the app is functional and meets the requirements set out in the project proposal. We give ourselves Good for functionality.
 
