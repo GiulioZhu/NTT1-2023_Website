@@ -25,7 +25,9 @@ Alongside Keras API, used to train a custom object detection model via transfer 
 Open source video conferencing solution used to provide video conferencing functionality within the application. This feature was implemented using the Jitsi SDK for Android. The meetings are currently hosted on a public Jitsi server however, due to the open source nature of Jitsi, it is possible to host meetings on a private server.
 
 ### Firebase:
-A cloud based, real time, NoSQL database that stores data in JSON file formats. Used to store room IDs of meetings currently in progress on Jitsi. A new meeting room ID would be created in the database when a senior engineer starts a meeting. This room would then be joinable by a single junior engineer. Once a meeting has 2 participants, it can’t be joined.
+A cloud based, real time, NoSQL(schemaless) database that stores data in JSON file formats. It is accessed via a unique URL, this URL is not displayed here for security reasons. Used to store room IDs of meetings currently in progress on Jitsi. A new meeting room ID would be created in the database when a senior engineer starts a meeting. This room would then be joinable by a single junior engineer. Once a meeting has 2 participants, it can’t be joined. Here is the structure of the database JSON.
+
+![](./assets/images/system_design/Database_Structure.png)
 
 # Sequence diagram:
 
