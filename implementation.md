@@ -187,37 +187,34 @@ There is also a "spinner", which is a selector at the bottom of the page, which 
 
 ## Video Conferencing
 
-In order to implement video conferencing I choose to use the Jitsi SDK and to store these meetings I choose to use the Firebase real-time database.
+In order to implement video conferencing I choose to use the Jitsi SDK and to store these meetings I chose to use the Firebase real-time database.
 
-Senior engineer side:
+### Senior engineer side:
 
-Overall Flow:
+#### <u> Overall Flow:<u/>
 
-Located in the ActivitySenior.java class. When the senior activity is launched, the Firebase database reference is initialised and the local broadcast manager is initialised. Then the onCreate function is first run, which initially set up the content view which is defined in the specified XML file. Then a function is run to set up the broadcast receiver(details explained below). Then the meeting name is initialised(details below). Finally, the launch Jitsi function is called to launch the meeting.
-
-Random Name Generation:
-
-- In order to implement Random Name generation, I had to `import java.util.Random` and a function that chooses 4 random characters from the string "0123456789qwertyuiopasdfghjklzxcvbnm".
+Located in the [ActivitySenior.java](http://ActivitySenior.java) class. When the senior activity is launched, the local broadcast manager is initialised(through the `setupBroadcastReceiver()`function), which also intialises the broadcast receiver with intent filters. Then the onCreate function is first run, which initially set up the content view which is defined in the specified XML file. Then a function is run to set up the broadcast receiver(details explained below). Then the meeting name is initialised(details below). Finally, the launch Jitsi function is called to launch the meeting.
 
 Broadcasting:
 
 - Android apps can send or receive broadcast messages from the Android system and other Android apps, similar to the publish-subscribe design pattern. These broadcasts are sent when an event of interest occurs.
 - In order to first set up the broadcasting, an instance of the local broadcast manager is needed, which you get from the `androidx.localbroadcastmanager.content.LocalBroadcastManager` class. An instance of the local broadcast manager is also initiatlised as earlier said.
-- Then using the `android.content.IntentFilter`class, we define a few intents we are filtering for that could be broadcasted from the app: “CONFERENCE_JOINED”, “CONFERENCE_TERMINATED”, and “PARTICIPANT_LEFT”. These are defined through Jitsi SDK’s `org.jitsi.meet.sdk.BroadcastEvent` class, which contains predefined broadcast intents. Register these filters into the broadcaster receiver class through the broadcast manager class.
-- We have also overridden the onReceive method to define what should happen when a broadcast event happens. Basically, when a broadcast is received an instance of the broadcast receiver is created. This is also where the `android.content.Intent`class is used to identify the intent sent from the broadcast. In the case of the trio broadcasts “CONFERENCE_JOINED”, “CONFERENCE_TERMINATED”, and “PARTICIPANT_LEFT”, we extract the meeting URL from the broadcast, as the information in these broadcasts is defined using hashmaps we must use the class`java.util.HashMap` to extract the meeting URL and get the meeting name using the extract URL function(which just parses and extracts the meeting name through the ‘/’ character). The function `updateMeetingParticipants()` is then called in the case the conference is terminated or the function `writeNewMeeting()` is called when the conference is created, however, the Firebase database is directly updated when a participant leaves as we do not want the handling of conference terminated and participant left to clash with their handling in the junior engineer side of things. The details of these functions are described in the Firebase section.
+- Then using the `android.content.IntentFilter`class, we define a few intents we are filtering for that could be broadcasted from the app: “CONFERENCE_JOINED” and “CONFERENCE_TERMINATED”. These are defined through Jitsi SDK’s `org.jitsi.meet.sdk.BroadcastEvent` class, which contains predefined broadcast intents. Register these filters into the broadcaster receiver class through the broadcast manager class.
+- We have also overridden the onReceive method to define what should happen when a broadcast event happens. Basically, when a broadcast is received an instance of the broadcast receiver is created. This is also where the `android.content.Intent`class is used to identify the intent sent from the broadcast. In the case of both of the broadcasts “CONFERENCE_JOINED” and  “CONFERENCE_TERMINATED”, we extract the meeting URL from the broadcast, as the information in these broadcasts is defined using hashmaps we must use the class`java.util.HashMap` to extract the meeting URL and get the meeting name using the extract URL function(which just parses and extracts the meeting name through the ‘/’ character). The function `setMeetingValue()`is important for the broadcasts and it is used for different reasons based on whether the conference was joined or terminanted. The details of this function is described in the Firebase section.
 - We are also required to unregister the receiver in the `onDestroy()` method in order to avoid data leaks.
 
 Calling the Jitsi SDK to start a meeting:
 
-- The repositories required within the setting.gradle file are as follows:
+- In order to start a Jitsi meeting, there are a few repositories and imports required:
+    - The repositories required within the setting.gradle file are as follows:
         - `google(),`
         - `mavenCentral()`
-        - `maven {    url "https://github.com/jitsi/jitsi-maven-repository/raw/master/releases"}`
-        - `maven {    url "https://maven.google.com/"`
-        - `maven { url 'https://www.jitpack.io/' }`
-- The dependency required for the Jitsi SDK is:
+        - `maven **{**    url "https://github.com/jitsi/jitsi-maven-repository/raw/master/releases"}`
+        - `maven **{**    url "https://maven.google.com/"`
+        - `maven **{** url 'https://www.jitpack.io/' **}**`
+    - The dependency required for the Jitsi SDK is:
         - `implementation('org.jitsi.react:jitsi-meet-sdk:9.0.0') **{** transitive = true **}**`
-- The classes required for Jitsi Meet Activity and my implementation of the Jitsi SDK are:
+    - The classes required for Jitsi Meet Activity and my implementation of the Jitsi SDK are:
         - `org.jitsi.meet.sdk.JitsiMeet;`
         - `org.jitsi.meet.sdk.JitsiMeetActivity;`
         - `org.jitsi.meet.sdk.JitsiMeetConferenceOptions;`
@@ -239,19 +236,22 @@ Adding Firebase:
     - `com.google.firebase.database.DatabaseReference`
     - `com.google.firebase.database.FirebaseDatabase`
     - `com.google.firebase.database.ValueEventListener`
-- First as mentioned before the Firebase database reference is initialised. There are two main functions that handle updating the Firebase database: `updateMeetingParticipants()` and `writeNewMeeting()`. In the case of a conference joined the `writeNewMeeting()` function is called, this function takes two parameters, meeting name and the number of participants in the meeting. The function declares the Firebase instance and connects it to a specified database through a URL. Then using the specific meeting name creates a new meeting key and stores the participants as value(in this case is 1) to set up a new meeting. The `updateMeetingParticipants()` takes in the parameter meeting name and declares the database in the same way. The code listens for a single value event on a node in the Firebase Realtime Database, identified by the meeting name. When the data at the node changes, the `onDataChange()` method is triggered. Inside `onDataChange()`, the code retrieves the current value of the node as an Integer and stores it in the data variable. The code then decrements the data value by 1, indicating a participant has left the meeting. If the decremented data value is 0, it means no more participants in the meeting, and the code removes the entire node associated with the meeting name. In the case of the senior engineer leaving, this is updated from the junior engineer side of the code to avoid clashes. In the case of “PARTICIPANT_LEFT”, the value is directly updated when handling the if cases for the broadcasting, in order to avoid clashes with the “CONFERENCE_TERMINATED” and “PARTICIPANT_LEFT” broadcasts in the junior activity. If the decremented data value is neither 0 nor 1, it logs an error message. The `onCancelled()` method handles errors that might occur during the database operation.
+- The Firebase database reference is defined within the `setMeetingValue()`function via a unique URL that connects to the database set up on the Firebase Console. In the case of the senior engineer there is one main function that handles updating the Firebase database: `setMeetingValue()`. In the case of a conference joined the `setMeetingValue()` function is called, this function takes two parameters, meeting name and the number of participants in the meeting. The function declares the Firebase instance and connects it to a specified database through a URL. Then using the specific meeting name creates a new meeting key and stores the participants as value(in this case is 1) to set up a new meeting. If the senior engineer terminates their meeting, the meeting must end as the host has disconnected, in this case the value of the meeting is set to 0, which I have coded to destroy the meeting on Firebase in the case this happens. Then the junior engineer is made to leave from their side(explained on their seciton).
 
-Junior engineer side
+### Junior engineer side
 
 Note: The repositories, dependencies, and classes I have mentioned for the senior engineer side are exactly the same, thus I will not mention them again.
 
-Overall Flow:
+#### <u> Overall Flow:<u/>
 
-Located in the LivePreviewActivity.java class. When the call button is clicked, the junior activity is launched, the Firebase database reference is initialised and the local broadcast manager is initialised. Then the `onCreate()` function is first run, which initially set up the content view which is defined in the specified XML file. Then a function is run to set up the broadcast receiver(details explained below). The app then queries the database and looks for an open meeting, if there are no open meetings a toast message is displayed that says “Please try again later”. The code establishes a connection to the Firebase Realtime Database through the unique URL in the `onCreate()` function and retrieves a reference to the "Meetings" node. When the call button is clicked, it adds a listener for a single value event on the "Meetings" node. Inside the `onDataChange()` method, the code iterates through all children (meetings) under the "Meetings" node. For each meeting, it extracts the number of participants. If a meeting has exactly one participant, the code retrieves the meeting name and launches the Jitsi video conferencing session with that name. If no meeting with one participant is found, the code displays a Toast message indicating no available meetings. The `onCancelled`method handles any errors occurring during the database operation.
+Located in the [LivePreviewActivity.java](http://LivePreviewActivity.java) class. When the call button is clicked, the junior activity is launched, the Firebase database reference is initialised and the local broadcast manager is initialised. Then the `onCreate()` function is first run, which initially set up the content view which is defined in the specified XML file. Then a function is run to set up the broadcast receiver(details explained below). The app then queries the database and looks for an open meeting, if there are no open meetings a toast message is displayed that says, "No meetings available, please try again later.". The code establishes a connection to the Firebase Realtime Database through the unique URL in the `onCreate()` function and retrieves a reference to the "Meetings" node. When the call button is clicked, it adds a listener for a single value event on the "Meetings" node. Inside the `onDataChange()` method, the code iterates through all children (meetings) under the "Meetings" node. For each meeting, it extracts the number of participants. If a meeting has exactly one participant, the code retrieves the meeting name and launches the Jitsi video conferencing session with that name. If no meeting with one participant is found, the code displays a Toast message indicating no available meetings. The `onCancelled` method handles any errors occurring during the database operation.
 
 Broadcasting:
 
-- Here the implementations of each of the broadcasts “CONFERENCE_JOINED” and “PARTICIPANT_LEFT” are slightly different from the senior activity and there is no implementation for “COMFERENCE_TERMINATED” as this is updated in the senior engineer side of the code. “CONFERENCE_JOINED” and PARTICIPANT_LEFT” both call `updateMeetingPartcipants()`but the implementation of this function is slightly different here. The data again is decremented. If the participants are now 0 the node is removed but if the participants are 1(meaning a junior engineer is left in the call) a hang-up broadcast is sent to the Jitsi meeting to close the meeting for the junior engineer and remove the meeting node from the database. When the conference is joined, however, the database is updated directly to 2 as the junior engineer will always be the second to join the meeting.
+- Here there are implementations the broadcasts “CONFERENCE_JOINED” and “CONFERENCE_TERMINATED”, however, they are slightly different from the senior engineer side and there is an extra broadcast that is required for the junior engineer side: “PARTICIPANT_LEFT”. “CONFERENCE_JOINED”, “CONFERENCE_LEFT”, and PARTICIPANT_LEFT” call `setMeetingValue()`.
+- When a conference is terminated, the method is called with the meeting name and a participant count of 1, setting the value of the meeting node in the Firebase Realtime Database to 1, which takes care of the case where the junior engineer leaves, but the senior engineer remains in the meeting(so that a different junior engineer could join).
+- In the case of a conference joined event, the method is called with the meeting name and a participant count of 2, setting the value of the meeting name node to 2, as the only case where a junior engineer would join a meeting is when the meeting already has a participant, meaning 2 can be the only possible value.
+- When a participant leaves a conference, the method is called with the meeting name and a participant count of 0, removing the meeting node from the "Meetings" node in the Firebase Realtime Database as this broadcast is a result of a senior engineer leaving, meaning the host has left the meeting and the meeting should end for everyone. In order to force the junior engineer to leave the call, when the “PARTICIPANT_LEFT” broadcast is received a broadcast is sent from the app to the Jitsi meet to hang up the call. Therefore, there are no more participants left in the meeting, ensuring that meetings with no participants are removed from the database, freeing up storage space and keeping the data clean.
 
 Calling the Jitsi SDK to start a meeting::
 
@@ -259,8 +259,8 @@ Calling the Jitsi SDK to start a meeting::
 
 Adding Firebase:
 
-- Extra details are described in the broadcasting section
-
+- The database reference variable is assigned the specific database I set up. It is assigned within the `onCreate()`function and within the `setMeetingValue()`function.
+- Other than this minute change and what is mentioned in the broadcasting section, it is implemented the same way as the senior engineer side.
 
 ## Camera source and model selection:
 
